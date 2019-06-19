@@ -1,15 +1,14 @@
-package xml.demo.dao;
+package xml.domparse.dao;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import xml.demo.domain.Student;
-import xml.demo.utils.XMLUtils;
-
-import java.util.List;
+import xml.domparse.domain.Student;
+import xml.domparse.utils.GlobalVar;
+import xml.domparse.utils.XMLUtils;
 
 public class StudentDao {
-    private static String filename = "src/main/java/xml/exam.xml";
+    private static String filename = GlobalVar.FILENAME;
 
     //需要自己处理异常
     public void add(Student s) {
@@ -69,13 +68,15 @@ public class StudentDao {
         return null;
     }
 
-    public void delete(String name) throws StudentNotFoundException { //delete
+    public void delete(String name, String filename) throws StudentNotFoundException { //delete
         try {
             Document document = XMLUtils.getDocument(filename);
             NodeList list = document.getElementsByTagName("name");
             for (int i = 0; i < list.getLength(); i++) {
                 if (list.item(i).getTextContent().equals(name)) {
                     list.item(i).getParentNode().getParentNode().removeChild(list.item(i).getParentNode());
+                    //更新到xml文档
+                    XMLUtils.write2XML(document, filename);
                     return;
                 }
             }
@@ -89,9 +90,25 @@ public class StudentDao {
         }
     }
 
-    private class StudentNotFoundException extends Exception {
+    public static class StudentNotFoundException extends Exception {
         public StudentNotFoundException(Object p0) {
 
+        }
+
+        public StudentNotFoundException(String message) {
+            super(message);
+        }
+
+        public StudentNotFoundException(String message, Throwable cause) {
+            super(message, cause);
+        }
+
+        public StudentNotFoundException(Throwable cause) {
+            super(cause);
+        }
+
+        public StudentNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+            super(message, cause, enableSuppression, writableStackTrace);
         }
     }
 }

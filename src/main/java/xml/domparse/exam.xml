@@ -10,9 +10,11 @@
         <location>大连</location>
         <grade>97</grade>
     </student>
-    <student examid="121" idcard="234234">
-        <name>sdaf</name>
-        <location>撒大声地</location>
-        <grade>89.0</grade>
+
+
+    <student examid="4234234234" idcard="23463274862738467823647823">
+        <name>刘光明</name>
+        <location>深圳</location>
+        <grade>100.0</grade>
     </student>
 </exam>

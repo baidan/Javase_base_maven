@@ -1,4 +1,4 @@
-package xml.demo.domain;
+package xml.domparse.domain;
 
 public class Student {
     String name;
