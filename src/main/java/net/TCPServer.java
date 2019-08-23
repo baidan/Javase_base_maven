@@ -29,6 +29,8 @@ import java.net.Socket;
         7.释放资源(Socket,ServerSocket)
  */
 public class TCPServer {
+
+
     public static void main(String[] args) throws IOException {
         //1.创建服务器ServerSocket对象和系统要指定的端口号
         ServerSocket server = new ServerSocket(8888);
