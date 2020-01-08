@@ -20,7 +20,7 @@ public class JDBCDemo {
     @Test
     public void testJDBCQuery() {
         //获取连接资源
-        Connection connection = JDBCUtils.getConnection();
+        Connection connection = JDBCUtils.getConnectionJDBC();
         Statement statement = null;
         ResultSet rs = null;
         if (connection != null) {
